@@ -1,25 +1,23 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
+import CreateMovie from './pages/CreateMovie';
+import Home from './pages/Home';
+import Login from './pages/Login';
+import MoviePlayer from './pages/MoviePlayer';
+import Movies from './pages/Movies';
+import Register from './pages/Register';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <Switch>
+        <Route path="/" exact component={Home}/>
+        <Route path="/login" component={Login}/>
+        <Route path="/register" component={Register}/>
+        <Route path="/movies" exact component={Movies}/>
+        <Route path="/movies/new" exact component={CreateMovie}/>
+        <Route path="/movies/:id" exact component={MoviePlayer}/>
+      </Switch>
+    </Router>
   );
 }
 
