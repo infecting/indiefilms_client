@@ -1,5 +1,6 @@
 import {useEffect, useState} from 'react'
 import { getMovies } from '../api';
+import Movie from '../components/Movie';
 
 export default function Movies() {
     const movie = async() => {
@@ -17,8 +18,9 @@ export default function Movies() {
     return (
         <div>
             {movies.map((movie) => (
-                <div>{movie.title}</div>
+                <Movie movie={movie}/>
             ))}
+            hi
         </div>
     )
 }

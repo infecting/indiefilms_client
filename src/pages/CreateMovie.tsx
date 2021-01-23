@@ -1,7 +1,7 @@
 import axios from 'axios';
-import {FormEvent, FormEventHandler, useState} from 'react';
+import {FormEvent, useState, useEffect} from 'react';
 import {useHistory} from 'react-router-dom'
-import { createMovie } from '../api';
+import { createMovie, refreshToken } from '../api';
 
 export default function CreateMovie() {
     const history = useHistory()
@@ -11,6 +11,10 @@ export default function CreateMovie() {
     const [url, setUrl] = useState("")
     const [coverPicture, setCoverPicture] = useState("")
 
+    useEffect(() => {
+        refreshToken().then((data) => {setUserId(data.user._id)}).catch(e => {history.push("/login")})
+    }, [userId, history])
+
     const submitHandle = async (e: FormEvent) => {
         e.preventDefault()
         await createMovie(userId, title, description, url, coverPicture)
@@ -19,9 +23,10 @@ export default function CreateMovie() {
 
     const fileUpload = async(e: any) => {
         try {
-            const data = new FormData();
+            const data:FormData = new FormData();
             data.append('file', e.target.files[0])
-            axios.post(`${process.env.REACT_APP_URI}/api/v1/movies/upload`, data)
+            const res = await axios.post(`${process.env.REACT_APP_URI}/api/v1/movies/upload`, data)
+            setUrl(res.data.data.downloadUri)
         } catch(e) {
             alert(e)
         }

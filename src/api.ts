@@ -35,7 +35,11 @@ export async function getMovies(): Promise<{movies: IMovie[]}> {
     return await sendApiRequest("GET", "movies", false);
 }
 
-export async function createMovie(userId: Partial<IMovie>, title: Partial<IMovie>, description: Partial<IMovie>, url: Partial<IMovie>, coverPicture: Partial<IMovie>): Promise<IMovie> {
+export async function getMovie(id:string): Promise<{movie: IMovie}> {
+    return await sendApiRequest("GET", `movies/get/${id}`, false);
+}
+
+export async function createMovie(userId: string, title: string, description: string, url: string, coverPicture: string): Promise<IMovie> {
     return await sendApiRequest("POST", "movies/create", false, {userId:userId, title: title, description: description, url: url, coverPicture: coverPicture})
 }
 
@@ -58,14 +62,16 @@ export interface IUser extends Document {
     password: string;
 }
 
-export interface IMovie extends Document {
+export interface IMovie {
+    _id: string;
     userId: string;
     title: string;
     description: string;
-    url: URL;
-    coverPicture: URL;
+    url: string;
+    coverPicture: string;
     score: number;
 }
+
 export interface IAuth {
     accessToken: string;
     user: IUser;
