@@ -1,0 +1,56 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #1a191f;
+    color: white;
+}
+
+a {
+    color: white;
+    text-decoration: none;
+}
+
+.wrapper {
+    padding: 1.5em;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+}
+
+nav h1 {
+    font-weight: bold;
+}
+
+nav ul {
+    display: flex;
+}
+
+ul {
+    list-style: none; 
+    margin: 0;
+    padding: 0;
+}
+
+ul li {
+    padding: 0 0.6em;
+}
+
+h1 {
+    margin: 0;
+}
+
+.bg {
+    background-color: #141116;
+}
+
+.movies-wrapper {
+    display: grid;
+    grid-template-columns: repeat(6, auto);
+}
+

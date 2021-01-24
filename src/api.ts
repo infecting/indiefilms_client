@@ -44,11 +44,11 @@ export async function createMovie(userId: string, title: string, description: st
 }
 
 export async function updateMovie(id: string, userId: Partial<IMovie>, title: Partial<IMovie>, description: Partial<IMovie>, url: Partial<IMovie>, coverPicture: Partial<IMovie>): Promise<IMovie> {
-    return await sendApiRequest("POST", `movies/update/${id}`, false, {userId:userId, title: title, description: description, url: url, coverPicture: coverPicture})
+    return await sendApiRequest("PATCH", `movies/update/${id}`, false, {userId:userId, title: title, description: description, url: url, coverPicture: coverPicture})
 }
 
 export async function deleteMovie(id: string): Promise<IMovie> {
-    return await sendApiRequest("POST", `movies/delete/${id}`, false);
+    return await sendApiRequest("DELETE", `movies/delete/${id}`, false);
 }
 
 

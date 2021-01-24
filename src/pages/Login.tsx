@@ -11,6 +11,7 @@ export default function Login() {
         try {
             let res = await login(email, password)
             if (res.accessToken) {
+                localStorage.setItem("id", res.user._id)
                 history.push("/movies")
             }
         } catch(e) {

@@ -1,4 +1,5 @@
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
+import Nav from './components/Nav';
 import CreateMovie from './pages/CreateMovie';
 import Home from './pages/Home';
 import Login from './pages/Login';
@@ -8,6 +9,8 @@ import Register from './pages/Register';
 
 function App() {
   return (
+    <>
+    <Nav />
     <Router>
       <Switch>
         <Route path="/" exact component={Home}/>
@@ -18,6 +21,7 @@ function App() {
         <Route path="/movies/:id" exact component={MoviePlayer}/>
       </Switch>
     </Router>
+    </>
   );
 }
 
