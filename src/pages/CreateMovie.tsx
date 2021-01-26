@@ -38,10 +38,18 @@ export default function CreateMovie() {
     return (
         <div className="wrapper">
             <form className="login-form" onSubmit={(e) => submitHandle(e)}>
-                <input type="text" placeholder="title" onChange={(e) => setTitle(e.target.value)}/>
-                <input type="text" placeholder="description" onChange={(e) => setDescription(e.target.value)}/>
-                {loading ? <p>Loading...</p>: <input type="file" placeholder="url" onChange={(e) => fileUpload(e)}/>}
-                <input type="text" placeholder="cover picture" onChange={(e) => setCoverPicture(e.target.value)}/>
+                <label htmlFor="title">Title:</label>
+                <input id="title" type="text" placeholder="title" onChange={(e) => setTitle(e.target.value)}/>
+                <br/>
+                <label htmlFor="description">Description:</label>
+                <input id="description" type="text" placeholder="description" onChange={(e) => setDescription(e.target.value)}/>
+                <br/>
+                <label htmlFor="file">Movie File:</label>
+                {loading ? <p>Loading...</p>: <input type="file" id="file" placeholder="url" onChange={(e) => fileUpload(e)}/>}
+                <br/>
+                <label htmlFor="coverPicture">Cover Picture:</label>
+                <input type="text" id="coverPicture" placeholder="cover picture" onChange={(e) => setCoverPicture(e.target.value)}/>
+                <br/>
                 <input type="submit"/>
             </form>
         </div>

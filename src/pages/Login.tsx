@@ -1,6 +1,7 @@
 import {FormEvent, useState} from 'react'
 import { login } from '../api'
 import {useHistory} from 'react-router-dom';
+import '../index.css'
 
 export default function Login() {
     const history = useHistory()
@@ -20,10 +21,14 @@ export default function Login() {
         
     }
     return (
-        <div>
+        <div className="wrapper">
             <form onSubmit={(e) => submitHandle(e)}>
-                <input type="email" onChange={(e) => setEmail(e.target.value)}/>
-                <input type="password" onChange={(e) => setPassword(e.target.value)}/>
+                <label htmlFor="email">Email</label>
+                <input id="email" type="email" onChange={(e) => setEmail(e.target.value)}/>
+                <br/>
+                <label htmlFor="password">Password:</label>
+                <input id="password" type="password" onChange={(e) => setPassword(e.target.value)}/>
+                <br/>
                 <input type="submit" />
             </form>
         </div>
