@@ -20,7 +20,7 @@ export default function MoviePlayer({ match }:RouteComponentProps<TParams>) {
     }, [])
     return (
         <div className="wrapper">
-            <video controls width="auto" height="auto">
+            <video controls width="100%" height="auto">
                 <source key={movie._id} src={movie.url} type="video/mp4"/>
             </video>
             <h1>{movie.title}</h1>
