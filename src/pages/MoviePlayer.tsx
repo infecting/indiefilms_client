@@ -19,8 +19,8 @@ export default function MoviePlayer({ match }:RouteComponentProps<TParams>) {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
     return (
-        <div>
-            <video controls width="750" height="500">
+        <div className="wrapper">
+            <video controls width="auto" height="auto">
                 <source key={movie._id} src={movie.url} type="video/mp4"/>
             </video>
             <h1>{movie.title}</h1>
