@@ -25,9 +25,9 @@ export default function MoviePlayer({ match }:RouteComponentProps<TParams>) {
     }, [])
     return (
         <div className="wrapper">
-            {loading ? <p>loading</p>: <video controls preload="auto" width="100%" height="auto">
-                <source key={movie._id} src={`${movie.url}#t=0.5`} onLoad={() => setLoading(false)} type="video/mp4"/>
-    </video>}
+            <video controls preload="auto" width="100%" height="auto">
+                <source key={movie._id} src={`${movie.url}#t=0.5`} type="video/mp4"/>
+    </video>
             
             <h1>{movie.title}</h1>
             <p>{movie.description}</p>
