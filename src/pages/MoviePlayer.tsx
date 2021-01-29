@@ -16,11 +16,8 @@ export default function MoviePlayer({ match }:RouteComponentProps<TParams>) {
         coverPicture: "",
         score: 0
     })
-    const [loading, setLoading] = useState(false)
     useEffect(() => {
-        setLoading(true)
         getMovie(match.params.id).then((data) => setMovie(data.movie)).catch((e) => console.error(e))
-        setLoading(false)
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
     return (
