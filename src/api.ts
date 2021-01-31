@@ -52,7 +52,7 @@ export async function deleteMovie(id: string): Promise<IMovie> {
 }
 
 export async function uploadMovie(file: any): Promise<IMovieUpload> {
-    return await sendApiRequest("POST", "/api/v1/movies/upload", file)
+    return await sendApiRequest("POST", "movies/upload", file)
 }
 
 export async function searchMovies(query: string) {
