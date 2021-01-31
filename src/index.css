@@ -12,9 +12,16 @@ body {
     font-family: 'Montserrat', sans-serif;
 }
 
+header {
+    width: 100%;
+    background-color: #141116;
+}
+
 a {
     color: white;
     text-decoration: none;
+    display: inline-block;
+    height: 25%;
 }
 
 .wrapper {
@@ -42,8 +49,8 @@ ul {
     padding: 0;
 }
 
-ul li {
-    padding: 0 0.6em;
+.items {
+    padding: 0.3em 0.8em;
 }
 
 h1 {
@@ -59,4 +66,15 @@ h1 {
     grid-template-columns: repeat(6, auto);
 }
 
+.btn-primary {
+    background-color: #e50914;
+    color: #fff;
+    outline: none;
+    border: none;
+    padding: 7px 17px;
+    border-radius: 5px;
+}
 
+.btn-item {
+    padding: .2em 0.8em;
+}

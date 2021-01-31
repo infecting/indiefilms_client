@@ -10,8 +10,9 @@ import Register from './pages/Register';
 function App() {
   return (
     <>
-    <Nav />
+   
     <Router>
+    <Nav />
       <Switch>
         <Route path="/" exact component={Home}/>
         <Route path="/login" component={Login}/>

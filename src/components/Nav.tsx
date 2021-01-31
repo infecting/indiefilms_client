@@ -1,16 +1,24 @@
+import Logo from '../logo.png'
+import {useHistory} from 'react-router-dom'
+
+
 export default function Nav() {
+    const history = useHistory()
+    const redirect = () => {
+        history.push("/login")
+    }
     return (
-        <div className="wrapper bg">
-            <header>
+        <header>
+            <div className="wrapper bg table">
                 <nav>
-                    <h1><a href="/movies">IndieFilms</a></h1>
+                <a href="/movies"><img alt="Indiefilms" src={Logo} height="50%" width="50%"/></a>
                     <ul>
-                        <li><a href="/movies">Home</a></li>
-                        <li><a href="/movies/new">Post Movie</a></li>
+                        <li className="items"><a href="/movies">Home</a></li>
+                        <li className="items"><a href="/movies/new">Post Movie</a></li>
+                        <li className="btn-item"><button className="btn-primary" onClick={() => redirect()}>Sign in</button></li>
                     </ul>
                 </nav>
-            </header>
-        </div>
-        
+            </div>
+        </header>
     )
 }
