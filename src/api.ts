@@ -51,6 +51,10 @@ export async function deleteMovie(id: string): Promise<IMovie> {
     return await sendApiRequest("DELETE", `movies/delete/${id}`, false);
 }
 
+export async function uploadMovie(file: any): Promise<IMovieUpload> {
+    return await sendApiRequest("POST", "/api/v1/movies/upload", file)
+}
+
 export async function searchMovies(query: string) {
     try {
         let encoded: string = encodeURIComponent(query)
@@ -61,14 +65,14 @@ export async function searchMovies(query: string) {
     }
 }
 
-export function sleep(ms:number) {
-    return new Promise(resolve => setTimeout(resolve, ms));
-}
-
 export interface IMovieSearch {
     data: {
         results: Array<ITmdb>
     }
+}
+
+export interface IMovieUpload {
+    downloadUri: string
 }
 
 export interface MovieHelper {

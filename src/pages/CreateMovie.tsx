@@ -1,7 +1,6 @@
-import axios from 'axios';
 import {FormEvent, useState, useEffect} from 'react';
 import {useHistory} from 'react-router-dom'
-import { createMovie, ITmdb, refreshToken, searchMovies } from '../api';
+import { createMovie, ITmdb, refreshToken, searchMovies, uploadMovie } from '../api';
 import '../index.css'
 
 export default function CreateMovie() {
@@ -29,9 +28,9 @@ export default function CreateMovie() {
             setLoading(true)
             const data:FormData = new FormData();
             data.append('file', e.target.files[0])
-            const res = await axios.post(`${process.env.REACT_APP_URI}/api/v1/movies/upload`, data)
+            const res = await uploadMovie(data)
             setLoading(false)
-            setUrl(res.data.data.downloadUri)
+            setUrl(res.downloadUri)
         } catch(e) {
             alert(e)
         }
