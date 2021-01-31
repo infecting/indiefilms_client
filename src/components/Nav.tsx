@@ -11,7 +11,7 @@ export default function Nav() {
         <header>
             <div className="wrapper bg table">
                 <nav>
-                <a href="/movies"><img alt="Indiefilms" src={Logo} height="50%" width="50%"/></a>
+                <a href="/movies"><img className="logo" alt="Indiefilms" src={Logo} height="50%" width="50%"/></a>
                     <ul>
                         <li className="items"><a href="/movies">Home</a></li>
                         <li className="items"><a href="/movies/new">Post Movie</a></li>

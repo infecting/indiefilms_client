@@ -10,6 +10,8 @@ export default function CreateMovie() {
     const [description, setDescription] = useState("")
     const [url, setUrl] = useState("")
     const [coverPicture, setCoverPicture] = useState("")
+    const [bannerPicture, setBannerPicture] = useState("")
+    const [score, setScore] = useState(0)
     const [loading, setLoading] = useState(false)
     const [movies, setMovies] = useState<ITmdb[]>([])
 
@@ -19,7 +21,7 @@ export default function CreateMovie() {
 
     const submitHandle = async (e: FormEvent) => {
         e.preventDefault()
-        await createMovie(userId, title, description, url, coverPicture)
+        await createMovie(userId, title, description, url, coverPicture, bannerPicture, score)
         history.push("/movies")
     }
 
@@ -52,6 +54,9 @@ export default function CreateMovie() {
         setTitle(movie.title)
         setDescription(movie.overview)
         setCoverPicture(`https://www.themoviedb.org/t/p/w440_and_h660_face${movie.poster_path}`)
+        setBannerPicture(`https://image.tmdb.org/t/p/original/${movie.backdrop_path}`)
+        setScore(movie.popularity)
+        console.log(title, description, score,coverPicture, bannerPicture)
         setMovies([])
     }
 

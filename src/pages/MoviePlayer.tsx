@@ -14,7 +14,8 @@ export default function MoviePlayer({ match }:RouteComponentProps<TParams>) {
         description: "",
         url: "",
         coverPicture: "",
-        score: 0
+        score: 0,
+        bannerPicture: ""
     })
     useEffect(() => {
         getMovie(match.params.id).then((data) => setMovie(data.movie)).catch((e) => console.error(e))

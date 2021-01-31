@@ -78,3 +78,30 @@ h1 {
 .btn-item {
     padding: .2em 0.8em;
 }
+
+@media (max-width: 600px) {
+    .logo {
+        height: 65%;
+        width: 65%;
+    }
+
+    .items {
+        display: none;
+    }
+
+    a {
+        width: 65%;
+    }
+}
+
+@media (max-width: 650px) {
+
+    a {
+        width: 50%;
+    }
+
+    .items {
+        white-space:nowrap;
+    }
+}
+

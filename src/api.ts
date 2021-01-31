@@ -39,8 +39,8 @@ export async function getMovie(id:string): Promise<{movie: IMovie}> {
     return await sendApiRequest("GET", `movies/get/${id}`, false);
 }
 
-export async function createMovie(userId: string, title: string, description: string, url: string, coverPicture: string): Promise<IMovie> {
-    return await sendApiRequest("POST", "movies/create", false, {userId:userId, title: title, description: description, url: url, coverPicture: coverPicture})
+export async function createMovie(userId: string, title: string, description: string, url: string, coverPicture: string, bannerPicture:string, score:number): Promise<IMovie> {
+    return await sendApiRequest("POST", "movies/create", false, {userId:userId, title: title, description: description, url: url, coverPicture: coverPicture, score: score, bannerPicture:bannerPicture})
 }
 
 export async function updateMovie(id: string, userId: Partial<IMovie>, title: Partial<IMovie>, description: Partial<IMovie>, url: Partial<IMovie>, coverPicture: Partial<IMovie>): Promise<IMovie> {
@@ -51,8 +51,8 @@ export async function deleteMovie(id: string): Promise<IMovie> {
     return await sendApiRequest("DELETE", `movies/delete/${id}`, false);
 }
 
-export async function uploadMovie(file: any): Promise<IMovieUpload> {
-    return await sendApiRequest("POST", "movies/upload", file)
+export async function uploadMovie(file: FormData): Promise<IMovieUpload> {
+    return await sendApiRequest("POST", "movies/upload", false, file)
 }
 
 export async function searchMovies(query: string) {
@@ -81,6 +81,7 @@ export interface MovieHelper {
 
 export interface ITmdb {
     id: number
+    backdrop_path: string
     original_language: string
     original_title: string
     overview: string
@@ -110,6 +111,7 @@ export interface IMovie {
     url: string;
     coverPicture: string;
     score: number;
+    bannerPicture: string;
 }
 
 export interface IAuth {
