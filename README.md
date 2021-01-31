@@ -1,4 +1,4 @@
 # Indiefilms
 
 ## TODO:
-### Import from IMDB + file upload
+### Style the website better - find color scheme etc
