@@ -17,11 +17,28 @@ header {
     background-color: #141116;
 }
 
+header::after {
+    content: '';
+    position: absolute;
+    border-top: 1px solid #3c3c3c;
+    width: 100%;
+}
+
 a {
     color: white;
     text-decoration: none;
     display: inline-block;
     height: 25%;
+}
+
+.banner {
+    width: 100%;
+}
+
+.banner-wrapper {
+    height: 40vh;
+    width: 100%;
+    overflow: hidden;
 }
 
 .wrapper {
