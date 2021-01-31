@@ -7,6 +7,17 @@ body {
     color: white;
 }
 
+.home-wrapper {
+    width: 110%;
+    margin: 0;
+    height: 100vh;
+    background-image: url("background.jpg");
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    overflow: hidden;
+}
+
 a {
     color: white;
     text-decoration: none;
@@ -53,4 +64,5 @@ h1 {
     display: grid;
     grid-template-columns: repeat(6, auto);
 }
+
 
