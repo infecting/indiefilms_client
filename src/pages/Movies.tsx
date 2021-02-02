@@ -1,10 +1,11 @@
 import {useEffect, useState} from 'react'
-import { deleteMovie, getMovies, IMovie } from '../api';
+import { deleteMovie, getMovies, IMovie, refreshToken } from '../api';
 import Movie from '../components/Movie';
 import '../index.css'
 
 export default function Movies() {
     const [movies, setMovies] = useState<IMovie[]>([]);
+    const [token, setToken] = useState("")
 
     const movie = async() => {
         try {
@@ -15,14 +16,24 @@ export default function Movies() {
         }
     }
 
+    const refresh_token = async() => {
+        try {
+            let res = await refreshToken()
+            setToken(res.accessToken)
+        } catch(e) {
+            console.error(e)
+        }
+    }
+
     const onDelete = async (id: string) => {
         const newList = movies.filter((movie) => movie._id !== id);
         setMovies(newList);
-        await deleteMovie(id)
+        await deleteMovie(id, token)
     }
     
     useEffect(() => {
         movie()
+        refresh_token()
     }, [])
     return (
         <div>

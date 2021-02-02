@@ -14,14 +14,15 @@ export default function CreateMovie() {
     const [score, setScore] = useState(0)
     const [loading, setLoading] = useState(false)
     const [movies, setMovies] = useState<ITmdb[]>([])
+    const [token, setToken] = useState("")
 
     useEffect(() => {
-        refreshToken().then((data) => {setUserId(data.user._id)}).catch(e => {history.push("/login")})
+        refreshToken().then((data) => {setUserId(data.user._id); setToken(data.accessToken)}).catch(e => {history.push("/login")})
     }, [userId, history])
 
     const submitHandle = async (e: FormEvent) => {
         e.preventDefault()
-        await createMovie(userId, title, description, url, coverPicture, bannerPicture, score)
+        await createMovie(userId, title, description, url, coverPicture, bannerPicture, score, token)
         history.push("/movies")
     }
 
@@ -30,7 +31,7 @@ export default function CreateMovie() {
             setLoading(true)
             const data:FormData = new FormData();
             data.append('file', e.target.files[0])
-            const res = await uploadMovie(data)
+            const res = await uploadMovie(data, token)
             setLoading(false)
             setUrl(res.downloadUri)
         } catch(e) {

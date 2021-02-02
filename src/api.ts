@@ -1,8 +1,8 @@
 import axios from 'axios';
 
-async function sendApiRequest<T>(method: "GET" | "PUT" | "POST" | "DELETE" | "PATCH", path: string, withCredentials:boolean, data?: any): Promise<T> {
+async function sendApiRequest<T>(method: "GET" | "PUT" | "POST" | "DELETE" | "PATCH", path: string, withCredentials:boolean, data?: any, headers?: any): Promise<T> {
         path = `${process.env.REACT_APP_URI}/api/v1/${path}`;
-        const response = await axios.request({method, baseURL: path, data, withCredentials:withCredentials});
+        const response = await axios.request({method, baseURL: path, data, withCredentials:withCredentials, headers: headers});
         const success: boolean = response.data.success;
     if (success) {
         return response.data.data as T;
@@ -39,20 +39,20 @@ export async function getMovie(id:string): Promise<{movie: IMovie}> {
     return await sendApiRequest("GET", `movies/get/${id}`, false);
 }
 
-export async function createMovie(userId: string, title: string, description: string, url: string, coverPicture: string, bannerPicture:string, score:number): Promise<IMovie> {
-    return await sendApiRequest("POST", "movies/create", false, {userId:userId, title: title, description: description, url: url, coverPicture: coverPicture, score: score, bannerPicture:bannerPicture})
+export async function createMovie(userId: string, title: string, description: string, url: string, coverPicture: string, bannerPicture:string, score:number, token: string): Promise<IMovie> {
+    return await sendApiRequest("POST", "movies/create", false, {userId:userId, title: title, description: description, url: url, coverPicture: coverPicture, score: score, bannerPicture:bannerPicture}, {"Authorization": token})
 }
 
 export async function updateMovie(id: string, userId: Partial<IMovie>, title: Partial<IMovie>, description: Partial<IMovie>, url: Partial<IMovie>, coverPicture: Partial<IMovie>): Promise<IMovie> {
     return await sendApiRequest("PATCH", `movies/update/${id}`, false, {userId:userId, title: title, description: description, url: url, coverPicture: coverPicture})
 }
 
-export async function deleteMovie(id: string): Promise<IMovie> {
-    return await sendApiRequest("DELETE", `movies/delete/${id}`, false);
+export async function deleteMovie(id: string, token: string): Promise<IMovie> {
+    return await sendApiRequest("DELETE", `movies/delete/${id}`, false,undefined, {"Authorization": token} );
 }
 
-export async function uploadMovie(file: FormData): Promise<IMovieUpload> {
-    return await sendApiRequest("POST", "movies/upload", false, file)
+export async function uploadMovie(file: FormData, token: string): Promise<IMovieUpload> {
+    return await sendApiRequest("POST", "movies/upload", false, file, {"Authorization": token})
 }
 
 export async function searchMovies(query: string) {
