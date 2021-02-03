@@ -42,6 +42,7 @@ export default function Movies() {
                     {movies.map((movie) => (
                         <div className="movie" key={movie._id}>
                             <Movie key={movie._id} movie={movie}/>
+                            <br/>
                             {localStorage.getItem("id") === movie.userId ? <button onClick={() => onDelete(movie._id)}>DELETE</button>: null}
                         </div>
                     ))}

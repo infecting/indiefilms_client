@@ -79,12 +79,8 @@ h1 {
 }
 
 .movies-wrapper {
-    display: flex;
-    flex-wrap: wrap;
-}
-
-.movies {
-    max-width: 25% ;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
 }
 
 .btn-primary {
@@ -99,7 +95,6 @@ h1 {
 .btn-item {
     padding: .2em 0.8em;
 }
-
 
 @media (max-width: 600px) {
     .logo {

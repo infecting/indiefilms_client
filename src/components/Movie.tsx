@@ -8,7 +8,7 @@ type MovieProps = {
 export default function Movie({movie}: MovieProps) {
     return (
         <>
-            <Link to={`/movies/${movie._id}`}><img className="poster" src={movie.coverPicture} alt={movie.title}/></Link>
+            <Link to={`/movies/${movie._id}`}><img height="200px" width="133px" className="poster" src={movie.coverPicture} alt={movie.title}/></Link>
         </>
     )
 }
