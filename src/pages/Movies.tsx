@@ -40,7 +40,7 @@ export default function Movies() {
             <div className="wrapper">
                 <div className="movies-wrapper">
                     {movies.map((movie) => (
-                        <div key={movie._id}>
+                        <div className="movie" key={movie._id}>
                             <Movie key={movie._id} movie={movie}/>
                             {localStorage.getItem("id") === movie.userId ? <button onClick={() => onDelete(movie._id)}>DELETE</button>: null}
                         </div>
