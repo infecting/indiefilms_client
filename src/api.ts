@@ -52,7 +52,7 @@ export async function deleteMovie(id: string, token: string): Promise<IMovie> {
 }
 
 export async function uploadMovie(file: FormData, token: string): Promise<IMovieUpload> {
-    return await sendApiRequest("POST", "movies/upload", true, file, {"Authorization": token, "Content-Type": "multipart/form-data"})
+    return await sendApiRequest("POST", "movies/upload", true, file)
 }
 
 export async function searchMovies(query: string) {
