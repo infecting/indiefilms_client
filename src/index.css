@@ -122,3 +122,7 @@ h1 {
     }
 }
 
+video {
+    border: none;
+    outline: none;
+}
