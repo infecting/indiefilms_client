@@ -40,7 +40,7 @@ export async function getMovie(id:string): Promise<{movie: IMovie}> {
 }
 
 export async function createMovie(userId: string, title: string, description: string, url: string, coverPicture: string, bannerPicture:string, score:number, token: string): Promise<IMovie> {
-    return await sendApiRequest("POST", "movies/create", true, {userId:userId, title: title, description: description, url: url, coverPicture: coverPicture, score: score, bannerPicture:bannerPicture}, {"Authorization": token})
+    return await sendApiRequest("POST", "movies/create", false, {userId:userId, title: title, description: description, url: url, coverPicture: coverPicture, score: score, bannerPicture:bannerPicture}, {"Authorization": token})
 }
 
 export async function updateMovie(id: string, userId: Partial<IMovie>, title: Partial<IMovie>, description: Partial<IMovie>, url: Partial<IMovie>, coverPicture: Partial<IMovie>): Promise<IMovie> {
@@ -48,11 +48,11 @@ export async function updateMovie(id: string, userId: Partial<IMovie>, title: Pa
 }
 
 export async function deleteMovie(id: string, token: string): Promise<IMovie> {
-    return await sendApiRequest("DELETE", `movies/delete/${id}`, true, undefined, {"Authorization": token} );
+    return await sendApiRequest("DELETE", `movies/delete/${id}`, false, undefined, {"Authorization": token} );
 }
 
 export async function uploadMovie(file: FormData, token: string): Promise<IMovieUpload> {
-    return await sendApiRequest("POST", "movies/upload", true, file, {"Authorization": token})
+    return await sendApiRequest("POST", "movies/upload", false, file, {"Authorization": token})
 }
 
 export async function searchMovies(query: string) {
