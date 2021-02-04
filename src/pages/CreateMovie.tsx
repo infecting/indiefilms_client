@@ -35,6 +35,7 @@ export default function CreateMovie() {
             setLoading(false)
             setUrl(res.downloadUri)
         } catch(e) {
+            setLoading(false)
             alert(e)
         }
     }
