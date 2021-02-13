@@ -66,8 +66,12 @@ export async function searchMovies(query: string) {
 }
 
 export async function getAdminMovies(token:string): Promise<{movies: IMovie[]}> {
-        return await sendApiRequest("GET", "movies/admin", true, {}, {"Authorization": token})
+        return await sendApiRequest("GET", "movies/admin", false, {}, {"Authorization": token})
 }
+
+export async function confirmMovies(id:string, token:string): Promise<IMovie> {
+    return await sendApiRequest("POST", `movies/admin/confirm/${id}`, false, {}, {"Authorization": token})
+}  
 
 export interface IMovieSearch {
     data: {

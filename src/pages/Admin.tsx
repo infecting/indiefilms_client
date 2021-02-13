@@ -1,11 +1,17 @@
-import {useEffect, useState} from 'react';
-import { getAdminMovies, IMovie, refreshToken } from '../api';
+import {FormEvent, useEffect, useState} from 'react';
+import { confirmMovies, getAdminMovies, IMovie, refreshToken } from '../api';
 import {useHistory} from 'react-router-dom'
 import Movie from '../components/Movie';
 
 export default function Admin() {
     const history = useHistory()
     const [movies, setMovies] = useState<IMovie[]>([])
+
+    const confirm = async(e:FormEvent, id:string) => {
+        let {accessToken} = await refreshToken();
+        await confirmMovies(id, accessToken)
+        e.preventDefault()
+    }
 
     const helper = async() => {
         try {
@@ -27,6 +33,7 @@ export default function Admin() {
             {movies.map((movie) => (
                         <div className="movie" key={movie._id}>
                             <Movie key={movie._id} movie={movie}/>
+                            <button onClick={e => confirm(e, movie._id)}>Confirm</button>
                         </div>
                     ))}
         </div>
