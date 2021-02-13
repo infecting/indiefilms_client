@@ -64,6 +64,7 @@ export default function CreateMovie() {
 
     return (
         <div className="wrapper">
+            <h1>Info</h1>
             <form className="login-form" onSubmit={(e) => submitHandle(e)}>
                 <label htmlFor="title">Title:</label>
                 <input id="title" autoComplete="off" type="text" value={title} placeholder="title" onChange={(e) => onTitleChange(e)}/>

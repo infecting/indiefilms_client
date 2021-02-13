@@ -6,6 +6,7 @@ import Login from './pages/Login';
 import MoviePlayer from './pages/MoviePlayer';
 import Movies from './pages/Movies';
 import Register from './pages/Register';
+import Admin from './pages/Admin'
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
         <Route path="/movies" exact component={Movies}/>
         <Route path="/movies/new" exact component={CreateMovie}/>
         <Route path="/movies/:id" exact component={MoviePlayer}/>
+        <Route path="/admin" exact component={Admin}/>
       </Switch>
     </Router>
     </>

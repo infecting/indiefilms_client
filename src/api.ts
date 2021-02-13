@@ -65,6 +65,10 @@ export async function searchMovies(query: string) {
     }
 }
 
+export async function getAdminMovies(token:string): Promise<{movies: IMovie[]}> {
+        return await sendApiRequest("GET", "movies/admin", true, {}, {"Authorization": token})
+}
+
 export interface IMovieSearch {
     data: {
         results: Array<ITmdb>
