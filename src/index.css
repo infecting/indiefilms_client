@@ -67,7 +67,7 @@ ul {
 }
 
 .items {
-    padding: 0.3em 0.8em;
+    padding: 0.6em 0.8em;
 }
 
 h1 {
@@ -158,4 +158,10 @@ video {
 
 .none {
     display: none;
+}
+
+.movie-img {
+    height: 40vh;
+    width: 100%;
+    object-fit: cover;
 }

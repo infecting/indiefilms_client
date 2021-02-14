@@ -1,5 +1,6 @@
 import {useEffect, useState} from 'react'
 import { deleteMovie, getMovies, IMovie, refreshToken } from '../api';
+import Img from '../assets/home.jpg'
 import Movie from '../components/Movie';
 import '../index.css'
 
@@ -37,7 +38,9 @@ export default function Movies() {
     }, [])
     return (
         <div>
+            <img src={Img} className="movie-img"/>
             <div className="wrapper">
+            <h4>Movies</h4>
                 <div className="movies-wrapper">
                     {movies.map((movie) => (
                         <div className="movie" key={movie._id}>
