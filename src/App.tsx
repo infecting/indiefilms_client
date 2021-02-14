@@ -8,7 +8,7 @@ import Movies from './pages/Movies';
 import Register from './pages/Register';
 import Admin from './pages/Admin'
 
-function App() {
+export function App() {
   return (
     <>
     <Router>
@@ -27,4 +27,4 @@ function App() {
   );
 }
 
-export default App;
+

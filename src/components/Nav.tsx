@@ -8,7 +8,7 @@ export default function Nav() {
         history.push("/login")
     }
     return (
-        <header>
+        <header id="h">
             <div className="wrapper bg table">
                 <nav>
                 <a href="/movies"><img className="logo" alt="Indiefilms" src={Logo} height="50%" width="50%"/></a>

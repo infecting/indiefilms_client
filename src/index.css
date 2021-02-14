@@ -155,3 +155,7 @@ video {
 .black-text {
     color: rgb(235, 235, 235);
 }
+
+.none {
+    display: none;
+}
