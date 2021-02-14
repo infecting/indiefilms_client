@@ -126,3 +126,32 @@ video {
     border: none;
     outline: none;
 }
+
+.home-wrapper {
+    width:100%;    
+    height:100%;
+    position: absolute;
+    top: 0;
+    left: 0px;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    display: flex;
+}
+
+.home-img {
+    position: relative;
+    object-fit: cover;
+    height: 100vh;
+    width: 100%;
+    -webkit-filter: blur(3px);
+    -moz-filter: blur(3px); 
+    -o-filter: blur(3px); 
+    -ms-filter: blur(3px); 
+    filter: blur(37px);
+}
+
+.black-text {
+    color: rgb(235, 235, 235);
+}
