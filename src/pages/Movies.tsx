@@ -38,7 +38,7 @@ export default function Movies() {
     }, [])
     return (
         <div>
-            <img src={Img} className="movie-img"/>
+            <img src={Img} className="movie-img" alt=""/>
             <div className="wrapper">
             <h4>Movies</h4>
                 <div className="movies-wrapper">
