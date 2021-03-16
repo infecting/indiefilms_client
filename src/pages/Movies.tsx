@@ -1,22 +1,14 @@
-import {useEffect, useState} from 'react'
-import { deleteMovie, getMovies, IMovie, refreshToken } from '../api';
+import React, {useEffect, useState} from 'react'
+import { deleteMovie, getMovies, IMovie, refreshToken} from '../api';
 import Img from '../assets/home.jpg'
 import Movie from '../components/Movie';
 import '../index.css'
 
+
+
 export default function Movies() {
     const [movies, setMovies] = useState<IMovie[]>([]);
     const [token, setToken] = useState("")
-
-    const movie = async() => {
-        try {
-            let res = await getMovies()
-            setMovies(res.movies)
-        } catch(e) {
-            console.error(e)
-        }
-    }
-
     const refresh_token = async() => {
         try {
             let res = await refreshToken()
@@ -25,6 +17,18 @@ export default function Movies() {
             console.error(e)
         }
     }
+    
+    const movie = async() => {
+        try {
+            let res = await getMovies()
+            setMovies(res.movies);
+        } catch(e) {
+            console.error(e)
+        }
+    }
+    
+
+    
 
     const onDelete = async (id: string) => {
         const newList = movies.filter((movie) => movie._id !== id);
@@ -37,7 +41,7 @@ export default function Movies() {
         refresh_token()
     }, [])
     return (
-        <div>
+        <React.Fragment>
             <img src={Img} className="movie-img" alt=""/>
             <div className="wrapper">
             <h4>Movies</h4>
@@ -51,6 +55,6 @@ export default function Movies() {
                     ))}
                 </div>
             </div>
-        </div>
+        </React.Fragment>
     )
 }

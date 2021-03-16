@@ -17,12 +17,21 @@ export default function Register() {
         }
     }
     return (
-        <div>
+        <div className="wrapper">
             <form onSubmit={(e) => submitHandle(e)}>
-                <input type="email" onChange={(e) => setEmail(e.target.value)}/>
-                <input type="text" onChange={(e) => setUsername(e.target.value)}/>
-                <input type="password" onChange={(e) => setPassword(e.target.value)}/>
-                <input type="submit"/>
+                <label htmlFor="email">Email</label>
+                <br/>
+                <input type="email" id="email" onChange={(e) => setEmail(e.target.value)}/>
+                <br/>
+                <label htmlFor="username">Username</label>
+                <br/>
+                <input type="text" id="username" onChange={(e) => setUsername(e.target.value)}/>
+                <br/>
+                <label htmlFor="password">Password</label>
+                <br/>
+                <input type="password" id="password" onChange={(e) => setPassword(e.target.value)}/>
+                <br/>
+                <input type="submit" className="btn-primary"/>
             </form>
         </div>
     )
