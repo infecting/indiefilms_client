@@ -38,6 +38,8 @@ export default function Admin() {
 
     return (
         <div className="wrapper">
+        <div className="movies-wrapper">
+
             {movies.map((movie) => (
                         <div className="movie" key={movie._id}>
                             <Movie key={movie._id} movie={movie}/>
@@ -48,5 +50,7 @@ export default function Admin() {
                         </div>
                     ))}
         </div>
+        </div>
+        
     )
 }
